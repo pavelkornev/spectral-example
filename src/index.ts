@@ -20,6 +20,7 @@ spectral.setRuleset(
       "no-empty-description": {
         given: "$..description",
         message: "Description must not be empty",
+        severity: 0, // error
         then: {
           function: truthy
         },
