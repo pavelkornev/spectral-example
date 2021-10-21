@@ -1,0 +1,53 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+      "title": "My API",
+      "description": "Description of API",
+      "version": ""
+    },
+    "paths": {
+      "/Product": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Retrieved entities",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "title": "Collection of Product",
+                    "properties": {
+                      "value": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Product"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Product": {
+          "title": "Product",
+          "type": "object",
+          "properties": {
+            "released": {
+              "type": "string",
+              "format": "date",
+              "example": "2017-04-13",
+              "nullable": true,
+              "maximum": "2018-12-31",
+              "minimum": "2018-01-01"
+            }
+          }
+        }
+      }
+    }
+  }
