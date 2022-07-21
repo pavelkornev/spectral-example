@@ -2,7 +2,6 @@
     "openapi": "3.0.2",
     "info": {
       "title": "My API",
-      "description": "Description of API",
       "version": ""
     },
     "paths": {
@@ -42,9 +41,7 @@
               "type": "string",
               "format": "date",
               "example": "2017-04-13",
-              "nullable": true,
-              "maximum": "2018-12-31",
-              "minimum": "2018-01-01"
+              "nullable": true
             }
           }
         }
