@@ -5,7 +5,8 @@
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "fetch-documents": "ts-node ./src/fetch_documents.ts",
-    "memory-test": "ts-node ./src/memory_test.ts"
+    "memory-test": "ts-node ./src/memory_test.ts",
+    "monitor-memory": "ts-node ./src/monitor_memory.ts"
   },
   "repository": {
     "type": "git",
