@@ -6,7 +6,7 @@ import * as Parsers from '@stoplight/spectral-parsers';
 // import { DiagnosticSeverity } from "@stoplight/types";
 import { oas } from "@stoplight/spectral-rulesets";
 
-const source = path.join(__dirname, "./oas-example.json");
+const source = path.join(__dirname, "./_documents/account.json");
 const document = new Document(fs.readFileSync(source, "utf8"), Parsers.Json, source);
 
 const ruleset = new Ruleset({
