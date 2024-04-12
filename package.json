@@ -9,7 +9,7 @@
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "fetch-documents": "ts-node ./src/fetch_documents.ts",
-    "memory-test": "npx tsx ./src/memory_test.ts"
+    "memory-test": "tsx ./src/memory_test.ts"
   },
   "repository": {
     "type": "git",
