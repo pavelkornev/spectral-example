@@ -1,13 +1,10 @@
+import fs from 'fs';
+import path from 'path';
 import { Document, Spectral, Ruleset } from "@stoplight/spectral-core";
-import * as fs from 'fs';
-import * as path from 'path';
-import { stylish, FormatterOptions } from "@stoplight/spectral-formatters";
 import * as Parsers from '@stoplight/spectral-parsers';
-// import { DiagnosticSeverity } from "@stoplight/types";
 import { oas } from "@stoplight/spectral-rulesets";
-
-const source = path.join(__dirname, "./_documents/account.json");
-const document = new Document(fs.readFileSync(source, "utf8"), Parsers.Json, source);
+import { printMemoryUsage } from './monitor_memory.js';
+import logUpdate from 'log-update';
 
 const ruleset = new Ruleset({
   extends: [oas],
@@ -17,7 +14,24 @@ const ruleset = new Ruleset({
 const spectral = new Spectral();
 spectral.setRuleset(ruleset);
 
-spectral.run(document).then((results) => {
-  const output = stylish(results, {} as FormatterOptions);
-  console.log(output);
+const documentsFolder = path.join(__dirname, '_documents');
+
+fs.readdir(documentsFolder, async (err, files) => {
+    if (err) {
+        console.error('Error reading documents folder:', err);
+        return;
+    }
+    const numberOfDocuments = files.length;
+    let documentCounter = 0;
+    for (const file of files) {
+        const filePath = path.join(documentsFolder, file);
+        const document = new Document(fs.readFileSync(filePath, "utf8"), Parsers.Json, filePath);
+        await spectral.run(document);
+        
+        documentCounter++;
+        printMemoryUsage(file, documentCounter, numberOfDocuments);
+    }
 });
+logUpdate.done();
+
+console.log('Validation completed.');

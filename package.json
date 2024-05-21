@@ -7,9 +7,8 @@
     "npm": ">=6"
   },
   "scripts": {
-    "start": "ts-node ./src/index.ts",
-    "fetch-documents": "ts-node ./src/fetch_documents.ts",
-    "memory-test": "tsx ./src/memory_test.ts"
+    "start": "tsx ./src/index.ts",
+    "fetch-data": "tsx ./src/fetch_documents.ts"
   },
   "repository": {
     "type": "git",
