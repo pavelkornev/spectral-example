@@ -2,6 +2,6 @@
 
 ```
 npm ci
+npm run fetch-data
 npm start
-npm run memory-test
 ```
