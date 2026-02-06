@@ -23,17 +23,11 @@ const ruleset1: RulesetDefinition = {
 };
 
 const ruleset2 = {
-//   extends: [ruleset1],
   extends: [[ruleset1, "off"]],
 };
-
-const ruleset3 = {
-//   extends: [ruleset2],
-  extends: [[ruleset2, "off"]],
-};
-
 
 
 const rulesetInstance = new Ruleset(ruleset2);
 
+// Expected to have no active rules, but got 1 active - "operation-success-response"
 console.log("Enabled rules: ", Object.keys(rulesetInstance.rules).filter(ruleName => rulesetInstance.rules[ruleName].enabled).join(", "));
